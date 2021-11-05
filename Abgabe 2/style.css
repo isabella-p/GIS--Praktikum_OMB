@@ -1,8 +1,10 @@
 body{
      background-color: lightsteelblue; 
      font: Courier;
-     font-family: 'Courier New', Courier, serif;
+     font-family: 'Ubuntu', sans-serif;
      font-size: 100%;}
+
+ @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap);
 
  [href]{
      background: lightsteelblue;
@@ -123,6 +125,7 @@ body{
      overflow: hidden;}
 
  h1{
+    font-family: 'Architects Daughter', cursive;
      position: relative;
      left: 1%;
      right: 1%;
