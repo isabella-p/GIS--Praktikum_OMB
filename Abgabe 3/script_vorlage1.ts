@@ -69,80 +69,59 @@ console.log(multi[1][4])
 console.log (events.length);
 
 // Lösung b) ...
-let singer: any[][] = [];
-singer[0] = ["Mark Knopfler", 10.1];
-singer[1] = ["Pink Floyd", 15.9];
-singer[2] = ["Metallica", 20.1];
-singer[3] = ["Michael Bublé", 11.1];
-singer[4] = ["Dire Straits", 12.2];
-singer[5] = ["Mariah Carey", 1.1];
-singer[6] = ["Cat Stevens", 12.9];
-singer[7] = ["Mark Forster", 2.1];
-singer[8] = ["Helene Fischer", 3.1];
-singer[9] = ["Bee Gees", 25.2];
-
-console.log(singer);
+for (let i = 0; i< events.length; i++){
+  console.log (events[i][0], events[i][1]);
+}
 
 // Lösung c) ...
-
-for (let i: number = 0; i < events.length; i++) {
-  if (events [i] ){
-
-  console.log(i);
+function maxPrice(array: any[][]): number{
+  let resultat = 0;
+  for (let i = 0; i< array.length; i++){
+    if(array[i][1] > resultat){
+      resultat = array[i][1];
+    }
   }
+  
+  return resultat;
 }
+
+let max = maxPrice(events);
+console.log(max);
 
 // Lösung d) ...
-var benutzerEingabe: any  = ""
-for (let i: number = 0; i < events.length; i++) {
-  if (events [i] == benutzerEingabe){
-    console.log(true);
+function interpretSearch(array: any[][], interpret: string): boolean{
+  for (let i = 0; i< array.length; i++){
+    if (array[i][0] == interpret){
+      return true;
+    }
   }
-  if (events [i] != benutzerEingabe){
-    console.log(false);
-  }
+
+  return false;
 }
-    
-let creator: string = "Michael Bublé";
-switch (creator) {
-  case "Mark Knopfler":
-  case "Pink Floyd": 
-  case "Metallica": 
-  case "Michael Bublé": 
-  case "Dire Straits": 
-  case "Mariah Carey": 
-  case "Cat Stevens": 
-  case "Mark Forster": 
-  case "Helene Fischer": 
-  case "Bee Gees": {
-    console.log(true);
-    break;
-  }
-  default: {
-    console.log(false);
-    break;
-  }
-}
+
+console.log(interpretSearch(events, "Michael Bublé"));
 
 // Lösung e) ...
-function factorial (n :number){
-  factorial(4);
-  factorial(5);
-  factorial(10);
-
-  let i: number = 1;
-
-  while (i > 0) {
-  console.log(i);
-  i++;
+function factorial(n: number): void {
+  let result: number = 1;
+  while (n > 0){
+    result *= n;
+    n--;
+  }
+  console.log(result);
 }
+factorial(10);
 
 // Lösung f) ...
-for (let i: number = 1; i <= 100; i++) {
-  if (i % 3 == 0) {
-    console.log (i);
+let count: number = 0;
+for (let i = 1; i <= 100; i++){
+  if(i % 3 == 0){
+    count++;
+    console.log(i);
   }
 }
+
+console.log("count: ", count);
 
 // Lösung g) ...
 class ConcertEvent {
@@ -159,3 +138,19 @@ class ConcertEvent {
 }
 
 // Lösung h) ...
+let concertArray: ConcertEvent[] = [
+  new ConcertEvent("Mark Knopfler", 10.1),
+  new ConcertEvent("Pink Floyd", 15.9),
+  new ConcertEvent("Metallica", 20.1),
+  new ConcertEvent("Michael Bublé", 11.1),
+  new ConcertEvent("Dire Straits", 12.2),
+  new ConcertEvent("Mariah Carey", 1.1),
+  new ConcertEvent("Cat Stevens", 12.9),
+  new ConcertEvent("Mark Forster", 2.1),
+  new ConcertEvent("Helene Fischer",3.1),
+  new ConcertEvent("Bee Gees", 25.2)
+];
+
+for(let i:number = 0; i < concertArray.length;i++) {
+  concertArray[i].show();
+}
