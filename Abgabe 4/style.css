@@ -1,0 +1,48 @@
+#display{
+    border: 2px solid brown;
+    padding: 10px;
+    display: table;
+}
+
+h2{
+    color: rosybrown;
+}
+
+#display div{
+    border: 2px solid lightcoral;
+    margin: 10px;
+    padding: 10px;
+}
+
+#display div::after{
+    content: "\00a0\00a0\00a0\00a0";
+    color: lightpink;
+}
+
+
+
+
+
+
+table#Tabelle1 {
+    border: 1px solid black;
+}
+    
+table#Tabelle1 tr:nth-child(even) {
+    background-color: red;
+}
+    
+table#Tabelle1 tr:nth-child(odd) {
+    background-color: green;
+}
+    
+table#Tabelle1 th {
+    color: blue;
+    background-color: black;
+    padding: 4px 4px 2px 4px;
+}
+    
+table#Tabelle1 td {
+    border: 1px solid black;
+    padding: 2px;
+}

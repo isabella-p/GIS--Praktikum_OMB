@@ -48,7 +48,7 @@ let events: any[][] = [
   ["Cat Stevens", 12.9],
   ["Mark Forster", 2.1],
   ["Helene Fischer", 3.1],
-  ["Bee Gees", 25.2],
+  ["Bee Gees", 25.2]
 ];
 
 // -- HIER BITTE IHRE LÖSUNG ZUR AUFGABE 2 EINTRAGEN
@@ -133,7 +133,7 @@ class ConcertEvent {
     this.price = price; 
   }
   show(){
-    console.log  (this.interpret + " " + this.price)
+    console.log  (this.interpret + " " + this.price);
   }
 }
 
@@ -147,10 +147,10 @@ let concertArray: ConcertEvent[] = [
   new ConcertEvent("Mariah Carey", 1.1),
   new ConcertEvent("Cat Stevens", 12.9),
   new ConcertEvent("Mark Forster", 2.1),
-  new ConcertEvent("Helene Fischer",3.1),
+  new ConcertEvent("Helene Fischer", 3.1),
   new ConcertEvent("Bee Gees", 25.2)
 ];
 
-for(let i:number = 0; i < concertArray.length;i++) {
+for (let i: number = 0; i < concertArray.length; i++) {
   concertArray[i].show();
 }
