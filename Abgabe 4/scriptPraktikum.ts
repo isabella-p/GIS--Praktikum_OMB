@@ -5,17 +5,34 @@ namespace testNamespace {
     const myButton: HTMLButtonElement = <HTMLButtonElement> document.querySelector("#mache-etwas");
    
 
+    let arrayFromStorageAsString: string = localStorage.getItem("localStorageElement");
+    let numbersArray = JSON.parse(arrayFromStorageAsString);
+
+
+
     myButton.addEventListener("click", myButtonHandler); 
     
     console.log(inputInterpret);
     console.log(inputPrice);
 
 
-   
+    let array: number [] = [12, 15, 17, 20];
+    let arrayString: string = JSON.stringify(array);
+
+    localStorage.setItem("localStorageElement", arrayString);
+
+    
     function myButtonHandler(): void {
         let interpretValue: string = inputInterpret.value;
         let priceValue: number = Number(inputPrice.value);
         // console.log("button click");
+
+        let arrayFromStorageAsString: string = localStorage.getItem("localStorageElement");
+        let numbersArray = JSON.parse(arrayFromStorageAsString);
+        console.log(arrayFromStorageAsString);
+        console.log(numbersArray);
+
+        console.log(numbersArray[0] * numbersArray[2]);
         
 
         // display.textContent = interpretValue + "; " + priceValue;

@@ -1,58 +1,50 @@
+
 namespace testNamespace {
-    const inputInterpret: HTMLInputElement = <HTMLInputElement> document.getElementById("input-interpret");
-    const inputPrice: HTMLInputElement = <HTMLInputElement> document.getElementById("input-price");
-    const display: HTMLElement = <HTMLElement> document.querySelector("#display");
-    const myButton: HTMLButtonElement = <HTMLButtonElement> document.querySelector("#mache-etwas");
-    const deleteButton: HTMLButtonElement = <HTMLButtonElement> document.querySelector("#delete");
-    const table: HTMLTableElement = <HTMLTableElement> document.querySelector("#Tabelle1");
 
+    // Verweise auf die HTML Elemente im DOM
+    const inputIntpret: HTMLInputElement = <HTMLInputElement>document.getElementById("input-interpret"); //Verweis auf Interpret Input-Feld
+    const inputPrice: HTMLInputElement = <HTMLInputElement>document.getElementById("input-price"); //Verweis auf Preis Input-Feld
+    const display: HTMLElement = <HTMLElement>document.querySelector("#display"); //Verweis auf das Display-Elternelement
+    const myButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#mache-etwas"); //Verweis auf den Button
 
+    // Füge dem Button einen Eventlistener hinzu, der auf Click-Events lauschen soll
+    myButton.addEventListener("click", mybuttonHandler); // Wenn ein Click-Event auf den Button ausgeführt wird, soll die Funktion "myButtonHandler" ausgeführt werden.
 
-    let arrayFromStorageAsString: string = localStorage.getItem("localStorageElement");
-    let numbersArray = JSON.parse(arrayFromStorageAsString);
-
-
-
-    myButton.addEventListener("click", myButtonHandler); 
-    deleteButton.removeEventListener("click", deleteButtonHandler);
-
-    console.log(inputInterpret);
+    // Kurzer Test, ob die Input-Element im Dom auch gefunden wurden
+    console.log(inputIntpret);
     console.log(inputPrice);
+    // Wenn alles klappt, sollten die entsprechenden HTML-Elemente in der Entwicklerkonsole angezeigt werden.
 
 
-    let array: number [] = [12, 15, 17, 20];
-    let arrayString: string = JSON.stringify(array);
+    // Handler-Funktion für den Oben definierten Event-Listener
+    function mybuttonHandler(): void {
+        //Holen der aktuellen Inhalte aus den Input-Elementen 
+        let interpretValue: string = inputIntpret.value; //Das hier steht gerade im Interpret-Input
+        let priceValue: number = Number(inputPrice.value); //Der Price-Input soll bitte einen Zahl sein
 
-    localStorage.setItem("localStorageElement", arrayString);
+        let newElement: HTMLDivElement = document.createElement("div"); // Erstelle ein Div-Element
+        let deleteButton: HTMLButtonElement = document.createElement("button"); // Delete Button erstellen
+        deleteButton.textContent = "Löschen"; //Delete-Button mit Inhalt füllen
 
-    
-    function myButtonHandler(){
-        let interpretValue: string = inputInterpret.value;
-        let priceValue: number = Number(inputPrice.value);
-        // console.log("button click");
+        newElement.textContent = interpretValue + "; " + priceValue; //Fülle das Div-Element mit einem Text-Inhalt
 
-        let arrayFromStorageAsString: string = localStorage.getItem("localStorageElement");
-        let numbersArray = JSON.parse(arrayFromStorageAsString);
-        console.log(arrayFromStorageAsString);
-        console.log(numbersArray);
+        display.appendChild(newElement); //Füge nun noch Das erstellte Div-Element in das Display-Element als Kind-Objekt ein
+        /* Da das Display Teil des DOMs ist und wir "newElement" dem Display-Element
+        hinzugefügt haben ist das "newElement" nun auch Teil des DOMs und genaugenommen
+        ein Kind(Child)-Objekt der Display-Elements */ 
 
-        console.log(numbersArray[0] * numbersArray[2]);
-        
+        newElement.appendChild(deleteButton); //füge den Delete Button als Kindelement dem neu erstellten Element "newElement" hinzu
 
-        // display.textContent = interpretValue + "; " + priceValue;
-        let newElement = document.createElement("div");
-        newElement.textContent = interpretValue + "; " + priceValue + deleteButton;
-        display.appendChild(newElement);
+        // Eventlistener für den Deletebutton
+        deleteButton.addEventListener("click", function(): void {
+            deleteEvent(newElement); //Übergeben wird als Parameter das Element, welches später gelöscht werden soll.
+        });
 
     }
 
-    function deleteButtonHandler(){
-        let interpretValue: string = inputInterpret.value;
-        let priceValue: number = Number(inputPrice.value);
-
-        let deleteElement = document.createElement("div");
-        deleteElement.textContent = interpretValue + "; " + priceValue;
-        display.removeChild(deleteElement);
-
+    // Eventlistener für die Delete-Buttons
+    function deleteEvent(parentElement: HTMLDivElement): void {
+        console.log("deleteEvent wurde aufgerufen!"); // Konsolenausgabe zum Testen des Funktionsaufrufes
+        display.removeChild(parentElement); //Lösche das als Parameter übergebene Element aus dem Elter-Element "display"
     }
 }
