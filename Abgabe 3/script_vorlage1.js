@@ -39,7 +39,7 @@ let events = [
     ["Cat Stevens", 12.9],
     ["Mark Forster", 2.1],
     ["Helene Fischer", 3.1],
-    ["Bee Gees", 25.2],
+    ["Bee Gees", 25.2]
 ];
 // -- HIER BITTE IHRE LÖSUNG ZUR AUFGABE 2 EINTRAGEN
 // Lösung a) 

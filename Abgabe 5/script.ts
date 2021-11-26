@@ -22,7 +22,7 @@ namespace testNamespace {
         let newElement: HTMLDivElement = document.createElement("div");
 
         let deleteButton: HTMLButtonElement = document.createElement("button");
-        deleteButton.textContent = "loeschen";
+        deleteButton.textContent = "Delete";
         
         newElement.textContent = interpretValue + "; " + priceValue;
         display.appendChild(newElement);
