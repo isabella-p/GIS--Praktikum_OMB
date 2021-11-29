@@ -38,7 +38,7 @@ function func2(name: string): string {
 
 // -- [Aufgabe 2]
 
-let events: any[][] = [
+let events: any [][] = [
   ["Mark Knopfler", 10.1],
   ["Pink Floyd", 15.9],
   ["Metallica", 20.1],
@@ -54,30 +54,30 @@ let events: any[][] = [
 // -- HIER BITTE IHRE LÖSUNG ZUR AUFGABE 2 EINTRAGEN
 
 // Lösung a) 
-var multi:any[][] = [[1,2,3,4,5],[6,7,8,9,10]]
-console.log(multi[0][0])
-console.log(multi[0][1])
-console.log(multi[0][2])
-console.log(multi[0][3]) 
-console.log(multi[0][4]) 
-console.log(multi[1][0]) 
-console.log(multi[1][1])
-console.log(multi[1][2]) 
-console.log(multi[1][3]) 
-console.log(multi[1][4])
+var multi: any [][] = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]];
+console.log(multi[0][0]),
+console.log(multi[0][1]),
+console.log(multi[0][2]),
+console.log(multi[0][3]),
+console.log(multi[0][4]),
+console.log(multi[1][0]),
+console.log(multi[1][1]),
+console.log(multi[1][2]), 
+console.log(multi[1][3]), 
+console.log(multi[1][4]),
 
 console.log (events.length);
 
 // Lösung b) ...
-for (let i = 0; i< events.length; i++){
+for (let i = 0; i < events.length; i++) {
   console.log (events[i][0], events[i][1]);
 }
 
 // Lösung c) ...
-function maxPrice(array: any[][]): number{
+function maxPrice(array: any [][]): number {
   let resultat = 0;
-  for (let i = 0; i< array.length; i++){
-    if(array[i][1] > resultat){
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][1] > resultat) {
       resultat = array[i][1];
     }
   }
@@ -89,9 +89,9 @@ let max = maxPrice(events);
 console.log(max);
 
 // Lösung d) ...
-function interpretSearch(array: any[][], interpret: string): boolean{
-  for (let i = 0; i< array.length; i++){
-    if (array[i][0] == interpret){
+function interpretSearch(array: any [][], interpret: string): boolean {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i][0] == interpret) {
       return true;
     }
   }
@@ -104,7 +104,7 @@ console.log(interpretSearch(events, "Michael Bublé"));
 // Lösung e) ...
 function factorial(n: number): void {
   let result: number = 1;
-  while (n > 0){
+  while (n > 0) {
     result *= n;
     n--;
   }
@@ -114,8 +114,8 @@ factorial(10);
 
 // Lösung f) ...
 let count: number = 0;
-for (let i = 1; i <= 100; i++){
-  if(i % 3 == 0){
+for (let i = 1; i <= 100; i++) {
+  if (i % 3 == 0) {
     count++;
     console.log(i);
   }
@@ -128,11 +128,11 @@ class ConcertEvent {
   interpret: string = "";
   price: number = 0;
 
-  constructor (interpret: string, price: number){
+  constructor (interpret: string, price: number) {
     this.interpret = interpret; 
     this.price = price; 
   }
-  show(){
+  show () {
     console.log  (this.interpret + " " + this.price);
   }
 }
