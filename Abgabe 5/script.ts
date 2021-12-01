@@ -17,20 +17,34 @@ namespace testNamespace {
         price: number; }
 
     let concertEvent: ConcertEvent = {
-        interpret: "Mark Knopfler",
+        interpret: "Mark Knopfler", 
         price: 10.1
     };
 
+    localStorage.setItem (concertEvent.interpret + "; " + concertEvent.price);
     console.log(concertEvent.interpret);
+
+
+
+
+
 
 
     const jsonObj: string = JSON.stringify(ConcertEvent);
     localStorage.setItem("Mark", jsonObj);
 
     const str: string = localStorage.getItem("Mark");
+
+    console.log(localStorage.getItem("Mark"));
+
     const parseObj: any = JSON.parse(str);
 
     console.log(parseObj);
+
+
+
+
+
 
 
 
