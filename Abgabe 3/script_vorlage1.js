@@ -44,17 +44,17 @@ let events = [
 // -- HIER BITTE IHRE LÖSUNG ZUR AUFGABE 2 EINTRAGEN
 // Lösung a) 
 var multi = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]];
-console.log(multi[0][0]);
-console.log(multi[0][1]);
-console.log(multi[0][2]);
-console.log(multi[0][3]);
-console.log(multi[0][4]);
-console.log(multi[1][0]);
-console.log(multi[1][1]);
-console.log(multi[1][2]);
-console.log(multi[1][3]);
-console.log(multi[1][4]);
-console.log(events.length);
+console.log(multi[0][0]),
+    console.log(multi[0][1]),
+    console.log(multi[0][2]),
+    console.log(multi[0][3]),
+    console.log(multi[0][4]),
+    console.log(multi[1][0]),
+    console.log(multi[1][1]),
+    console.log(multi[1][2]),
+    console.log(multi[1][3]),
+    console.log(multi[1][4]),
+    console.log(events.length);
 // Lösung b) ...
 for (let i = 0; i < events.length; i++) {
     console.log(events[i][0], events[i][1]);

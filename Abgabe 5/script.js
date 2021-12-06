@@ -8,6 +8,18 @@ var testNamespace;
     myButton.addEventListener("click", myButtonHandler);
     console.log(inputInterpret);
     console.log(inputPrice);
+    let concertEvent = {
+        interpret: "Mark Knopfler",
+        price: 10.1
+    };
+    localStorage.setItem(concertEvent.interpret + "; " + concertEvent.price);
+    console.log(concertEvent.interpret);
+    const jsonObj = JSON.stringify(ConcertEvent);
+    localStorage.setItem("Mark", jsonObj);
+    const str = localStorage.getItem("Mark");
+    console.log(localStorage.getItem("Mark"));
+    const parseObj = JSON.parse(str);
+    console.log(parseObj);
     function myButtonHandler() {
         let interpretValue = inputInterpret.value;
         let priceValue = Number(inputPrice.value);
