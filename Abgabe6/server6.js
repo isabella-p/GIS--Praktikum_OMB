@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
-var Server;
-(function (Server) {
+var Server6;
+(function (Server6) {
     const hostname = "127.0.0.1"; //localhost
     const port = 3000;
     const server = http.createServer((request, response) => {
@@ -32,7 +32,7 @@ var Server;
     server.listen(port, hostname, () => {
         console.log(`Server running at http://${hostname}: ${port}`);
     });
-})(Server || (Server = {}));
+})(Server6 || (Server6 = {}));
 //node ./Server/server.js
 //strg C - Server schließt
 //http://127.0.0.1:3000/greetings?name=Isabella

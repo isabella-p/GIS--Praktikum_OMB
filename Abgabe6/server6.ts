@@ -1,6 +1,6 @@
 import * as http from "http";
 
-namespace Server {
+namespace Server6 {
     const hostname: string = "127.0.0.1"; //localhost
     const port: number = 3000;
 
