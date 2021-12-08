@@ -27,8 +27,8 @@ namespace testNamespace {
     };
 
     localStorage.setItem (inputInterpret.value , inputPrice.value);
-    console.log(concertEvent.interpret);
-
+    console.log(concertEvent.interpret + concertEvent.price);
+    
 
 
 

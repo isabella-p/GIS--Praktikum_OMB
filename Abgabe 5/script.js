@@ -18,7 +18,7 @@ var testNamespace;
         price: 10.1
     };
     localStorage.setItem(inputInterpret.value, inputPrice.value);
-    console.log(concertEvent.interpret);
+    console.log(concertEvent.interpret + concertEvent.price);
     const jsonObj = JSON.stringify(ConcertEvent);
     localStorage.setItem("Mark", jsonObj);
     const str = localStorage.getItem("Mark");
