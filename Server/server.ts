@@ -1,4 +1,4 @@
-/*import * as http from "http";
+import * as http from "http";
 
 namespace Server {
     const hostname: string = "127.0.0.1"; //localhost
@@ -21,7 +21,7 @@ namespace Server {
                 case "/greetings":
                     let name: string = url.searchParams.get("name");
                     console.log(name);
-                    response.write("Hallo " + name + ", schön dich zu sehen!");
+                    response.write("Hallo " + name + ", schoen dich zu sehen!");
                     break;
                 default:
                     response.statusCode = 404;
@@ -35,7 +35,7 @@ namespace Server {
     });
         
 }
- */
 
+//node ./Server/server.js
 //strg C - Server schließt
 //http://127.0.0.1:3000/greetings?name=Isabella

@@ -6,7 +6,7 @@ namespace Client {
     const myForm: HTMLFormElement = <HTMLFormElement> document.getElementById("myForm");
     const sendButton: HTMLButtonElement = <HTMLButtonElement> document.getElementById("send-button");
 
-    sendButton.addEventListener("click", function(evt: Event) {
+    sendButton.addEventListener("click", function (evt: Event) {
         evt.preventDefault();
         sendForm();
     });

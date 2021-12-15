@@ -2,7 +2,7 @@
 var Client;
 (function (Client) {
     console.log("Client läuft");
-    const url = "http://127.0.0.1:3000";
+    const url = "http://127.0.0.1:3001";
     const path = "/convertDate";
     const myForm = document.getElementById("myForm");
     const sendButton = document.getElementById("send-button");
@@ -20,4 +20,4 @@ var Client;
         console.log(responseText);
     }
 })(Client || (Client = {}));
-//# sourceMappingURL=client6.js.map
+//# sourceMappingURL=client.js.map

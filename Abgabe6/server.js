@@ -4,7 +4,7 @@ const http = require("http");
 var Server;
 (function (Server) {
     const hostname = "127.0.0.1"; //localhost
-    const port = 3000;
+    const port = 3001;
     const server = http.createServer((request, response) => {
         response.statusCode = 200;
         response.setHeader("Content-Type", "text/plain");
@@ -16,14 +16,19 @@ var Server;
                 response.write("Server erreichbar");
                 break;
             case "/convertDate":
-                let day = url.searchParams.get("day");
+                /*
+                let day: any = url.searchParams.get("day");
                 console.log(day);
-                let month = url.searchParams.get("month");
+                let month: any = url.searchParams.get("month");
                 console.log(month);
-                let year = url.searchParams.get("year");
+                let year: any = url.searchParams.get("year");
                 console.log(year);
-                response.write("Day: " + day + ", Month: " + month + ", Year: " + year);
+                */
+                let date = url.searchParams.get("date");
+                console.log(date);
+                response.write("Date: " + date);
                 break;
+            //http://127.0.0.1:3001/convertDate?date=12.November.2021
             default:
                 response.statusCode = 404;
         }
@@ -33,7 +38,7 @@ var Server;
         console.log(`Server running at http://${hostname}: ${port}`);
     });
 })(Server || (Server = {}));
-//node ./Server/server.js
+//node ./Abgabe6/server.js
 //strg C - Server schließt
 //http://127.0.0.1:3000/greetings?name=Isabella
 //# sourceMappingURL=server.js.map
