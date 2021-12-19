@@ -12,7 +12,7 @@ namespace Server {
             response.setHeader("Access-Control-Allow-Original", "*");
 
             //Routing
-            let url: URL = new URL(request.url || "", `htt://${request.headers.host}`);
+            let url: URL = new URL(request.url || "", `http://${request.headers.host}`);
 
             switch (url.pathname) {
                 case "/":
@@ -29,8 +29,10 @@ namespace Server {
                     console.log(year);
                     */
 
-                    let date: any = url.searchParams.get("date");
+                    let date: Date = new Date(JSON.parse(url.searchParams.get("newDate")));
+                    //let newDate: Date = url.searchParams.get("date");
                     console.log(date);
+
                     response.write("Date: " + date);
                     break;
                     //http://127.0.0.1:3001/convertDate?date=12.November.2021
@@ -48,7 +50,7 @@ namespace Server {
         
 }
 
-
+// npm start
 //node ./Abgabe6/server.js
 //strg C - Server schließt
 

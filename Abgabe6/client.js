@@ -15,6 +15,7 @@ var Client;
         let formData = new FormData(myForm);
         let query = new URLSearchParams(formData);
         let urlWithQuery = url + path + "?" + query.toString();
+        console.log(urlWithQuery);
         let response = await fetch(urlWithQuery);
         let responseText = await response.text();
         console.log(responseText);

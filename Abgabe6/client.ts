@@ -17,6 +17,7 @@ namespace Client {
         let formData: FormData = new FormData(myForm);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
         let urlWithQuery: string = url + path + "?" + query.toString();
+        console.log(urlWithQuery);
 
         let response: Response = await fetch(urlWithQuery);
         let responseText: string = await response.text();

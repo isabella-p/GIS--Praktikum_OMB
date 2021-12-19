@@ -10,7 +10,7 @@ var Server;
         response.setHeader("Content-Type", "text/plain");
         response.setHeader("Access-Control-Allow-Original", "*");
         //Routing
-        let url = new URL(request.url || "", `htt://${request.headers.host}`);
+        let url = new URL(request.url || "", `http://${request.headers.host}`);
         switch (url.pathname) {
             case "/":
                 response.write("Server erreichbar");
@@ -24,7 +24,8 @@ var Server;
                 let year: any = url.searchParams.get("year");
                 console.log(year);
                 */
-                let date = url.searchParams.get("date");
+                let date = new Date(JSON.parse(url.searchParams.get("newDate")));
+                //let newDate: Date = url.searchParams.get("date");
                 console.log(date);
                 response.write("Date: " + date);
                 break;
@@ -38,6 +39,7 @@ var Server;
         console.log(`Server running at http://${hostname}: ${port}`);
     });
 })(Server || (Server = {}));
+// npm start
 //node ./Abgabe6/server.js
 //strg C - Server schließt
 //http://127.0.0.1:3000/greetings?name=Isabella
