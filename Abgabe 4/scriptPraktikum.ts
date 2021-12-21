@@ -6,7 +6,8 @@ namespace testNamespace {
    
 
     let arrayFromStorageAsString: string = localStorage.getItem("localStorageElement");
-    let numbersArray = JSON.parse(arrayFromStorageAsString);
+    let numbersArray: string = JSON.parse(arrayFromStorageAsString);
+    console.log(numbersArray);
 
 
 

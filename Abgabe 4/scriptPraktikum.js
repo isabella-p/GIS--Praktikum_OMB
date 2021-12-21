@@ -7,6 +7,7 @@ var testNamespace;
     const myButton = document.querySelector("#mache-etwas");
     let arrayFromStorageAsString = localStorage.getItem("localStorageElement");
     let numbersArray = JSON.parse(arrayFromStorageAsString);
+    console.log(numbersArray);
     myButton.addEventListener("click", myButtonHandler);
     console.log(inputInterpret);
     console.log(inputPrice);

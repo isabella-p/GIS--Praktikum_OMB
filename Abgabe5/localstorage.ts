@@ -11,11 +11,6 @@ namespace testNamespace {
     
     console.log(inputInterpret);
     console.log(inputPrice);
-
-    interface concertEvent {
-        interpret: string;
-        price: number;
-    }
     
     const  array: any [] = [];
 
@@ -24,9 +19,6 @@ namespace testNamespace {
         let interpretValue: string = inputInterpret.value;
         let priceValue: number = Number(inputPrice.value);
         // console.log("button click");
-
-        array.push([interpretValue, priceValue]);
-        localStorage.setItem("gisPraktikum_input", JSON.stringify(array));
         
         // display.textContent = interpretValue + "; " + priceValue;
         let newElement: HTMLDivElement = document.createElement("div");
@@ -34,6 +26,9 @@ namespace testNamespace {
         let deleteButton: HTMLButtonElement = document.createElement("button");
         deleteButton.textContent = "Delete";
         
+        array.push([interpretValue, priceValue]);
+        localStorage.setItem("gisPraktikum_input", JSON.stringify(array));
+
         newElement.textContent = interpretValue + "; " + priceValue;
         display.appendChild(newElement);
 
@@ -44,15 +39,41 @@ namespace testNamespace {
         });
     }
 
-    //saveButton.addEventListener("click", saveButtonHandler);
-    loadButton.addEventListener("click", loadButtonHandler);
+    function createEvent (interpret: string, price: number): void {
+        let tr: HTMLElement = document.createElement("tr");
+        let interpretElement: HTMLElement = document.createElement("td");
+        let priceElement: HTMLElement = document.createElement("td");
+        let deleteElement: HTMLElement = document.createElement("td");
+        let deleteButtonElement: HTMLElement = document.createElement("delete-button");
 
-    /*function saveButtonHandler(): void {
-        console.log("Save Button clicked");
-        console.log("aktueller Input: " + inputInterpret.value + inputPrice.value);
-        localStorage.setItem("localStorage", inputInterpret.value + inputPrice.value);
+        tr.id = "delete" + elementID.toString();
+        deleteButtonElement.id = elementID.toString();
+
+        interpretElement.innerText = interpret;
+        priceElement.innerText = price + "";
+        deleteButtonElement.innerText = "delete";
+        deleteElement.append(deleteButtonElement);
+        deleteElement.addEventListener("click", deleteEvent);
+
+        tr.appendChild(interpretElement);
+        tr.appendChild(priceElement);
+        tr.appendChild(deleteElement);
+
+        eventtabelle.appendChild(tr);
+        elementID++;
     }
-    */
+
+
+
+    //saveButton.addEventListener("click", saveButtonHandler);
+    //function saveButtonHandler(): void {
+    //  console.log("Save Button clicked");
+    //  console.log("aktueller Input: " + inputInterpret.value + inputPrice.value);
+    //  localStorage.setItem("localStorage", inputInterpret.value + inputPrice.value);
+    //}
+    
+
+    loadButton.addEventListener("click", loadButtonHandler);
 
     function loadButtonHandler(): void {
         console.log("Load Button clicked");
@@ -71,43 +92,4 @@ namespace testNamespace {
         let tr: HTMLElement = document.getElementById("delete" + deleteEventId);
         tr.remove();
     }
-
-
-    /*
-    const jsonObj: string = JSON.stringify(ConcertEvent);
-    localStorage.setItem("Mark", jsonObj);
-
-    const str: string = localStorage.getItem("Mark");
-    console.log(localStorage.getItem("Mark"));
-    const parseObj: any = JSON.parse(str);
-
-    console.log(parseObj); 
-    
-    
-    
-    interface ConcertEvent {
-        interpret: string;
-        price: number; }
-
-    let concertEvent: ConcertEvent = {
-        interpret: "Mark Knopfler" + "Pink Floyd" + "Metallica" + "Micheal Bublé",
-        price: 10.1 + 15.9 + 20.1 + 11.1};
-
-    localStorage.setItem (inputInterpret.value , inputPrice.value);
-    console.log(concertEvent.interpret + concertEvent.price);
-    
-
-    let arrayIGotFromLocalStorage: any[];
-    let arrayString: string = JSON.stringify(array);
-    
-    localStorage.setItem("myArray", arrayString);
-    let stringFromLocalStorage: string = localStorage.getItem("myArray");
-
-    arrayIGotFromLocalStorage = JSON.parse(stringFromLocalStorage); 
-
-    console.log("Das Array mit dem Key 'myArray' aus dem LocalStorage:", arrayIGotFromLocalStorage);
-    console.log("Der Wert an der Stelle[0] mal den Wert an der Stelle[3]=", arrayIGotFromLocalStorage[0] * arrayIGotFromLocalStorage[3]);
-    
-*/
-
 }

@@ -1,3 +1,5 @@
+import { request } from "http";
+
 namespace Client {
     console.log("Client läuft");
     const url: string = "http://127.0.0.1:3001";
@@ -23,4 +25,18 @@ namespace Client {
         let responseText: string = await response.text();
         console.log(responseText); 
     }
+
+    async function sendJSONStringWithPost (url: RequestInfo, jsonString: string): Promise<void> {
+        let response: Response = await fetch(url, {
+            method: "post",
+            body: jsonString
+        });
+        console.log(response);
+    }
+
+    sendJSONStringWithPost(
+        "http://localhost:3000/",
+        JSON.stringify({test: "Das heutige Datum"})
+    );
+    
 }

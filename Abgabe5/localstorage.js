@@ -16,12 +16,12 @@ var testNamespace;
         let interpretValue = inputInterpret.value;
         let priceValue = Number(inputPrice.value);
         // console.log("button click");
-        array.push([interpretValue, priceValue]);
-        localStorage.setItem("gisPraktikum_input", JSON.stringify(array));
         // display.textContent = interpretValue + "; " + priceValue;
         let newElement = document.createElement("div");
         let deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
+        array.push([interpretValue, priceValue]);
+        localStorage.setItem("gisPraktikum_input", JSON.stringify(array));
         newElement.textContent = interpretValue + "; " + priceValue;
         display.appendChild(newElement);
         newElement.appendChild(deleteButton);
@@ -29,14 +29,32 @@ var testNamespace;
             deleteEvent(newElement);
         });
     }
-    //saveButton.addEventListener("click", saveButtonHandler);
-    loadButton.addEventListener("click", loadButtonHandler);
-    /*function saveButtonHandler(): void {
-        console.log("Save Button clicked");
-        console.log("aktueller Input: " + inputInterpret.value + inputPrice.value);
-        localStorage.setItem("localStorage", inputInterpret.value + inputPrice.value);
+    function createEvent(interpret, price) {
+        let tr = document.createElement("tr");
+        let interpretElement = document.createElement("td");
+        let priceElement = document.createElement("td");
+        let deleteElement = document.createElement("td");
+        let deleteButtonElement = document.createElement("delete-button");
+        tr.id = "delete" + elementID.toString();
+        deleteButtonElement.id = elementID.toString();
+        interpretElement.innerText = interpret;
+        priceElement.innerText = price + "";
+        deleteButtonElement.innerText = "delete";
+        deleteElement.append(deleteButtonElement);
+        deleteElement.addEventListener("click", deleteEvent);
+        tr.appendChild(interpretElement);
+        tr.appendChild(priceElement);
+        tr.appendChild(deleteElement);
+        eventtabelle.appendChild(tr);
+        elementID++;
     }
-    */
+    //saveButton.addEventListener("click", saveButtonHandler);
+    //function saveButtonHandler(): void {
+    //  console.log("Save Button clicked");
+    //  console.log("aktueller Input: " + inputInterpret.value + inputPrice.value);
+    //  localStorage.setItem("localStorage", inputInterpret.value + inputPrice.value);
+    //}
+    loadButton.addEventListener("click", loadButtonHandler);
     function loadButtonHandler() {
         console.log("Load Button clicked");
         let valueFromLocalStorage = localStorage.getItem("gisPraktikum_input");
@@ -52,41 +70,5 @@ var testNamespace;
         let tr = document.getElementById("delete" + deleteEventId);
         tr.remove();
     }
-    /*
-    const jsonObj: string = JSON.stringify(ConcertEvent);
-    localStorage.setItem("Mark", jsonObj);
-
-    const str: string = localStorage.getItem("Mark");
-    console.log(localStorage.getItem("Mark"));
-    const parseObj: any = JSON.parse(str);
-
-    console.log(parseObj);
-    
-    
-    
-    interface ConcertEvent {
-        interpret: string;
-        price: number; }
-
-    let concertEvent: ConcertEvent = {
-        interpret: "Mark Knopfler" + "Pink Floyd" + "Metallica" + "Micheal Bublé",
-        price: 10.1 + 15.9 + 20.1 + 11.1};
-
-    localStorage.setItem (inputInterpret.value , inputPrice.value);
-    console.log(concertEvent.interpret + concertEvent.price);
-    
-
-    let arrayIGotFromLocalStorage: any[];
-    let arrayString: string = JSON.stringify(array);
-    
-    localStorage.setItem("myArray", arrayString);
-    let stringFromLocalStorage: string = localStorage.getItem("myArray");
-
-    arrayIGotFromLocalStorage = JSON.parse(stringFromLocalStorage);
-
-    console.log("Das Array mit dem Key 'myArray' aus dem LocalStorage:", arrayIGotFromLocalStorage);
-    console.log("Der Wert an der Stelle[0] mal den Wert an der Stelle[3]=", arrayIGotFromLocalStorage[0] * arrayIGotFromLocalStorage[3]);
-    
-*/
 })(testNamespace || (testNamespace = {}));
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=localstorage.js.map
