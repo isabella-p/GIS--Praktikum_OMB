@@ -10,26 +10,16 @@ var Server;
         response.setHeader("Content-Type", "text/plain");
         response.setHeader("Access-Control-Allow-Original", "*");
         //Routing
-        let url = new URL(request.url || "", `http://${request.headers.host}`);
+        let url = new URL(request.url || "", `htt://${request.headers.host}`);
         switch (url.pathname) {
             case "/":
-                response.write("Server erreichbar");
+                response.write("Hello World");
                 break;
-            case "/convertDate":
-                /*
-                let day: any = url.searchParams.get("day");
-                console.log(day);
-                let month: any = url.searchParams.get("month");
-                console.log(month);
-                let year: any = url.searchParams.get("year");
-                console.log(year);
-                */
-                let date = new Date(JSON.parse(url.searchParams.get("newDate")));
-                //let newDate: Date = url.searchParams.get("date");
-                console.log(date);
-                response.write("Date: " + date);
+            case "/greetings":
+                let name = url.searchParams.get("name");
+                console.log(name);
+                response.write("Hallo " + name + ", schoen dich zu sehen!");
                 break;
-            //http://127.0.0.1:3001/convertDate?date=12.November.2021
             default:
                 response.statusCode = 404;
         }
@@ -39,8 +29,7 @@ var Server;
         console.log(`Server running at http://${hostname}: ${port}`);
     });
 })(Server || (Server = {}));
-// npm start
-//node ./Abgabe6/server.js
+//node ./Server/server.js
 //strg C - Server schließt
 //http://127.0.0.1:3000/greetings?name=Isabella
-//# sourceMappingURL=server.js.map
+//# sourceMappingURL=server2.js.map

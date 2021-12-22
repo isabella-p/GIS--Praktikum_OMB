@@ -39,31 +39,6 @@ namespace testNamespace {
         });
     }
 
-    function createEvent (interpret: string, price: number): void {
-        let tr: HTMLElement = document.createElement("tr");
-        let interpretElement: HTMLElement = document.createElement("td");
-        let priceElement: HTMLElement = document.createElement("td");
-        let deleteElement: HTMLElement = document.createElement("td");
-        let deleteButtonElement: HTMLElement = document.createElement("delete-button");
-
-        tr.id = "delete" + elementID.toString();
-        deleteButtonElement.id = elementID.toString();
-
-        interpretElement.innerText = interpret;
-        priceElement.innerText = price + "";
-        deleteButtonElement.innerText = "delete";
-        deleteElement.append(deleteButtonElement);
-        deleteElement.addEventListener("click", deleteEvent);
-
-        tr.appendChild(interpretElement);
-        tr.appendChild(priceElement);
-        tr.appendChild(deleteElement);
-
-        eventtabelle.appendChild(tr);
-        elementID++;
-    }
-
-
 
     //saveButton.addEventListener("click", saveButtonHandler);
     //function saveButtonHandler(): void {
@@ -87,9 +62,8 @@ namespace testNamespace {
     function deleteEvent(parentElement: HTMLDivElement): void {
         console.log("deleteEvent wurde aufgerufen!");
         display.removeChild(parentElement);
-        let deleteEventId: string = (<HTMLElement>deleteEvent.arguments).id;
-        console.log(deleteEventId);
-        let tr: HTMLElement = document.getElementById("delete" + deleteEventId);
-        tr.remove();
+        //let deleteEventId: string = (<HTMLElement>deleteEvent.arguments).id;
+        //console.log(deleteEventId);
     }
+    
 }

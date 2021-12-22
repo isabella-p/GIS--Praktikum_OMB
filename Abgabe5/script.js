@@ -29,25 +29,6 @@ var testNamespace;
             deleteEvent(newElement);
         });
     }
-    function createEvent(interpret, price) {
-        let tr = document.createElement("tr");
-        let interpretElement = document.createElement("td");
-        let priceElement = document.createElement("td");
-        let deleteElement = document.createElement("td");
-        let deleteButtonElement = document.createElement("delete-button");
-        tr.id = "delete" + elementID.toString();
-        deleteButtonElement.id = elementID.toString();
-        interpretElement.innerText = interpret;
-        priceElement.innerText = price + "";
-        deleteButtonElement.innerText = "delete";
-        deleteElement.append(deleteButtonElement);
-        deleteElement.addEventListener("click", deleteEvent);
-        tr.appendChild(interpretElement);
-        tr.appendChild(priceElement);
-        tr.appendChild(deleteElement);
-        eventtabelle.appendChild(tr);
-        elementID++;
-    }
     //saveButton.addEventListener("click", saveButtonHandler);
     //function saveButtonHandler(): void {
     //  console.log("Save Button clicked");
@@ -65,10 +46,8 @@ var testNamespace;
     function deleteEvent(parentElement) {
         console.log("deleteEvent wurde aufgerufen!");
         display.removeChild(parentElement);
-        let deleteEventId = deleteEvent.arguments.id;
-        console.log(deleteEventId);
-        let tr = document.getElementById("delete" + deleteEventId);
-        tr.remove();
+        //let deleteEventId: string = (<HTMLElement>deleteEvent.arguments).id;
+        //console.log(deleteEventId);
     }
 })(testNamespace || (testNamespace = {}));
-//# sourceMappingURL=localstorage.js.map
+//# sourceMappingURL=script.js.map
