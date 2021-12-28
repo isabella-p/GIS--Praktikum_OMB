@@ -20,20 +20,14 @@ namespace Server {
                     break;
                 case "/convertDate":
 
-                    /*
-                    let day: any = url.searchParams.get("day");
-                    console.log(day);
-                    let month: any = url.searchParams.get("month");
-                    console.log(month);
-                    let year: any = url.searchParams.get("year");
-                    console.log(year);
-                    */
-
-                    let date: Date = new Date(JSON.parse(url.searchParams.get("newDate")));
-                    //let newDate: Date = url.searchParams.get("date");
+                   // let newDate: Date = new Date(JSON.parse(url.searchParams.get("newDate")));
+                    let date: string = url.searchParams.get("Date").toString();
                     console.log(date);
 
-                    response.write("Date: " + date);
+                    const dateSeparate = date.split("/");
+                    const dateText: string = "Day: " + dateSeparate[2] + " Month: " + dateSeparate[1] + " Year: " + dateSeparate[0];
+
+                    response.write(dateText);
                     break;
                     //http://127.0.0.1:3001/convertDate?date=12.November.2021
 
@@ -50,7 +44,7 @@ namespace Server {
         
 }
 
-// npm start
+//npm start
 //node ./Abgabe6/server.js
 //strg C - Server schließt
 
