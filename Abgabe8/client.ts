@@ -1,4 +1,12 @@
-namespace testNamespace {
+import * as http from "http";
+import * as mongo from "mongodb";
+
+namespace Client {
+    console.log("Client läuft");
+    const url: string = "http://127.0.0.1:3000";
+    const path: string = "/concertEvents";
+
+    
     const inputInterpret: HTMLInputElement = <HTMLInputElement> document.getElementById("input-interpret");
     const inputPrice: HTMLInputElement = <HTMLInputElement> document.getElementById("input-price");
     const display: HTMLElement = <HTMLElement> document.querySelector("#display");
