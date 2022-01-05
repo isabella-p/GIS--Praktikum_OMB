@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +15,23 @@
     <div id="display">
         <h2>Events Table</h2>
 
-        <input id="input-interpret" type = "text" name = "interpret" placeholder = "Interpret" />
-        <input id="input-price" type = "number" name = "price" placeholder = "Price" />
-        <button id="mache-etwas"> Inputs eintragen </button>
+        <!-- <input id="interpret" type="text" name="interpret" placeholder="Interpret" />
+        <input id="price" type="number" name="price" placeholder="Price" />
+        -->
+
+        <form id="events">
+            <h3> Konzerte </h3>
+            <label for="firstNameOfInterpret">Vorname:</label>
+            <input id="firstNameOfInterpret" type="text" name="firstNameOfInterpret" placeholder="Vorname" />
+            <label for="lastNameOfInterpret">Nachname:</label>
+            <input id="lastNameOfInterpret" type="text" name="lastNameOfInterpret" placeholder="Nachname" />
+            <label for="price">Preis:</label>
+            <input id="price" type="number" name="price" placeholder="Preis" />
+            <button id="mache-etwas"> Inputs eintragen </button>
+
+
     </div>
 
 </body>
+
 </html>

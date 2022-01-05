@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
 const mongo = require("mongodb");
-var Server;
-(function (Server) {
+var Client;
+(function (Client) {
     const hostname = "127.0.0.1"; //localhost
     const port = 3000;
     const mongoUrl = "mongodb://localhost:27017"; // für lokale MongoDB
@@ -31,7 +31,7 @@ var Server;
                 await mongoClient.connect();
                 switch (request.method) {
                     case "GET":
-                        await dbFind("concert", "events", {
+                        await dbFind("meineEvents", "concertEventsCol", {
                             concertNr: Number(url.searchParams.get("concertNr"))
                         }, response);
                         break;
@@ -42,21 +42,12 @@ var Server;
                         });
                         request.on("end", async () => {
                             mongoClient
-                                .db("university")
-                                .collection("student")
+                                .db("meineEvents")
+                                .collection("concertEventsCol")
                                 .insertOne(JSON.parse(jsonString));
                         });
                         break;
                 }
-            /* let date: string = url.searchParams.get("Date").toString();
-             console.log(date);
-
-             const dateSeparate = date.split("/");
-             const dateText: string = "Day: " + dateSeparate[2] + " Month: " + dateSeparate[1] + " Year: " + dateSeparate[0];
-
-             response.write(dateText);
-             break;
-            */ //http://127.0.0.1:3001/convertDate?date=12.November.2021
             default:
                 response.statusCode = 404;
         }
@@ -65,5 +56,5 @@ var Server;
     server.listen(port, hostname, () => {
         console.log(`Server running at http://${hostname}: ${port}`);
     });
-})(Server || (Server = {}));
+})(Client || (Client = {}));
 //# sourceMappingURL=server.js.map

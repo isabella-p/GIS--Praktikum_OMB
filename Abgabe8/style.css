@@ -8,6 +8,11 @@ h2{
     color: rosybrown;
 }
 
+h3{
+    text-decoration: underline;
+    text-decoration-color: brown;
+}
+
 #display div{
     border: 2px solid lightcoral;
     margin: 10px;

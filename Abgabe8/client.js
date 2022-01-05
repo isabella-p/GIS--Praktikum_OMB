@@ -1,35 +1,57 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var Client;
 (function (Client) {
     console.log("Client läuft");
     const url = "http://127.0.0.1:3000";
     const path = "/concertEvents";
-    const inputInterpret = document.getElementById("input-interpret");
-    const inputPrice = document.getElementById("input-price");
+    const inputInterpret = document.getElementById("interpret");
+    const inputPrice = document.getElementById("price");
     const display = document.querySelector("#display");
     const myButton = document.querySelector("#mache-etwas");
     myButton.addEventListener("click", myButtonHandler);
     console.log(inputInterpret);
     console.log(inputPrice);
+    async function sendJSONStringWithPOST(url, jsonString) {
+        let response = await fetch(url, {
+            method: "post", body: jsonString
+        });
+    }
+    sendJSONStringWithPOST("http://localhost:3000/concertEvents", JSON.stringify({
+        firstNameOfInterpret: "Mark",
+        lastNameOfInterpret: "Knopfler",
+        price: 10.1
+    }));
+    sendJSONStringWithPOST("http://localhost:3000/concertEvents", JSON.stringify({
+        firstNameOfInterpret: "Michael",
+        lastNameOfInterpret: "Bublé",
+        price: 11.1
+    }));
+    sendJSONStringWithPOST("http://localhost:3000/concertEvents", JSON.stringify({
+        firstNameOfInterpret: "Mariah",
+        lastNameOfInterpret: "Carey",
+        price: 1.1
+    }));
     function myButtonHandler() {
         let interpretValue = inputInterpret.value;
         let priceValue = Number(inputPrice.value);
         // console.log("button click");
         // display.textContent = interpretValue + "; " + priceValue;
         let newElement = document.createElement("div");
-        let deleteButton = document.createElement("button");
-        deleteButton.textContent = "Delete";
         newElement.textContent = interpretValue + "; " + priceValue;
         display.appendChild(newElement);
+        /*let deleteButton: HTMLButtonElement = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
         newElement.appendChild(deleteButton);
-        deleteButton.addEventListener("click", function () {
+
+        deleteButton.addEventListener("click", function(): void {
             deleteEvent(newElement);
-        });
+        });*/
     }
-    function deleteEvent(parentElement) {
-        console.log("deleteEvent wurde aufgerufen!");
-        display.removeChild(parentElement);
+    async function eventLoad() {
+        let response = await fetch("http://localhost:3000/concertEvents");
+        let text = await response.text();
+        console.log(JSON.parse(text));
     }
 })(Client || (Client = {}));
 //# sourceMappingURL=client.js.map
