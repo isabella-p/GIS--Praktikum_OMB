@@ -6,7 +6,7 @@ namespace Server {
 
     const server: http.Server = http.createServer(
         (request: http.IncomingMessage, response: http.ServerResponse) => {
-            
+
             response.statusCode = 200;
             response.setHeader("Content-Type", "text/plain");
             response.setHeader("Access-Control-Allow-Origin", "*");
@@ -20,7 +20,7 @@ namespace Server {
                     break;
                 case "/convertDate":
 
-                   // let newDate: Date = new Date(JSON.parse(url.searchParams.get("newDate")));
+                    // let newDate: Date = new Date(JSON.parse(url.searchParams.get("newDate")));
                     let date: string = url.searchParams.get("Date").toString();
                     console.log(date);
 
@@ -29,7 +29,7 @@ namespace Server {
 
                     response.write(dateText);
                     break;
-                    //http://127.0.0.1:3001/convertDate?date=12.November.2021
+                //http://127.0.0.1:3001/convertDate?date=12.November.2021
 
                 default:
                     response.statusCode = 404;
@@ -41,7 +41,7 @@ namespace Server {
     server.listen(port, hostname, () => {
         console.log(`Server running at http://${hostname}: ${port}`);
     });
-        
+
 }
 
 //npm start
