@@ -7,6 +7,7 @@ var Client;
     const path = "/convertDate";
     const myForm = document.getElementById("myForm");
     const sendButton = document.getElementById("send-button");
+    const antwort = document.getElementById("response");
     sendButton.addEventListener("click", function (evt) {
         evt.preventDefault();
         sendForm();
@@ -20,7 +21,9 @@ var Client;
         let response = await fetch(urlWithQuery);
         let responseText = await response.text();
         console.log(responseText);
-        document.getElementById("response").innerText = responseText;
+        let edition = document.createElement("p");
+        edition.textContent = responseText;
+        antwort.appendChild(edition);
     }
 })(Client || (Client = {}));
 //# sourceMappingURL=client.js.map

@@ -6,7 +6,7 @@ namespace Client {
 
     const inputInterpret: HTMLInputElement = <HTMLInputElement>document.getElementById("interpret");
     const inputPrice: HTMLInputElement = <HTMLInputElement>document.getElementById("price");
-    const display: HTMLElement = <HTMLElement> document.querySelector("#display");
+    const display: HTMLElement = <HTMLElement>document.querySelector("#display");
     const myButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#mache-etwas");
 
 
@@ -30,6 +30,12 @@ namespace Client {
         price: number;
     }
 
+    async function requestEvent(): Promise<Event[]> {
+        let response: Response = await fetch("http://localhost:3000/concertEvents");
+        let text: string = await response.text();
+        return JSON.parse(text) as Event[];
+    }
+
     sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
@@ -51,11 +57,25 @@ namespace Client {
     sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
-          firstNameOfInterpret: "Mariah",
-          lastNameOfInterpret: "Carey",
-          price: 1.1
+            firstNameOfInterpret: "Mariah",
+            lastNameOfInterpret: "Carey",
+            price: 1.1
         })
-      );
+    );
+
+    function onSubmitForm(event: Event) {
+        let formData: FormData = new FormData(<HTMLFormElement>event.currentTarget);
+        sendJSONStringWithPOST(
+            "http://localhost:3000/concertEvents",
+            JSON.stringify({
+                _id: formData.get("_id"),
+                firsttNameOfInterpret: formData.get("firstNameOfInterpret"),
+                lastNameOfInterpret: formData.get("lastNameOfInterpret"),
+                price: formData.get("price")
+            })
+        );
+        event.preventDefault();
+    }
 
 
     function myButtonHandler(): void {
@@ -66,7 +86,7 @@ namespace Client {
 
         // display.textContent = interpretValue + "; " + priceValue;
         let newElement: HTMLDivElement = document.createElement("div");
-        
+
         newElement.textContent = interpretValue + "; " + priceValue;
         display.appendChild(newElement);
 

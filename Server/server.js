@@ -8,7 +8,7 @@ var Server;
     const server = http.createServer((request, response) => {
         response.statusCode = 200;
         response.setHeader("Content-Type", "text/plain");
-        response.setHeader("Access-Control-Allow-Original", "*");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         //Routing
         let url = new URL(request.url || "", `http://${request.headers.host}`);
         switch (url.pathname) {
