@@ -16,6 +16,11 @@ var Client;
             method: "post", body: jsonString
         });
     }
+    async function requestEvent() {
+        let response = await fetch("http://localhost:3000/concertEvents");
+        let text = await response.text();
+        return JSON.parse(text);
+    }
     sendJSONStringWithPOST("http://localhost:3000/concertEvents", JSON.stringify({
         firstNameOfInterpret: "Mark",
         lastNameOfInterpret: "Knopfler",
@@ -31,6 +36,16 @@ var Client;
         lastNameOfInterpret: "Carey",
         price: 1.1
     }));
+    function onSubmitForm(event) {
+        let formData = new FormData(event.currentTarget);
+        sendJSONStringWithPOST("http://localhost:3000/concertEvents", JSON.stringify({
+            _id: formData.get("_id"),
+            firsttNameOfInterpret: formData.get("firstNameOfInterpret"),
+            lastNameOfInterpret: formData.get("lastNameOfInterpret"),
+            price: formData.get("price")
+        }));
+        event.preventDefault();
+    }
     function myButtonHandler() {
         let interpretValue = inputInterpret.value;
         let priceValue = Number(inputPrice.value);

@@ -1,0 +1,52 @@
+body{
+    background-color:lightgoldenrodyellow; 
+    font: Courier;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 100%;}
+
+ @import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap);
+
+ #zumAnfang {
+    color: rgb(48, 23, 23);
+    position: relative;
+    display: right;} 
+
+ div{
+    position: static;
+    border: 3px solid rosybrown;
+    padding-left: 10px;
+    padding-right: 10px;} 
+    
+ a{
+    font: 14px Courier;
+    text-decoration: whitesmoke;
+    color: rgb(48, 23, 23);
+    padding: 0px 5 px 0 px 5px;
+    border-right: 2px solid darkgoldenrod;}
+
+ .Startseite{
+    height: 30 px;
+    padding-top: 7px solid;
+    padding-left: 5px;
+    margin-top: 20px;
+    box-shadow: 4px 6px pink;
+    overflow: hidden;}
+
+ h1{
+    position: relative;
+    top: 1vh;
+    height: 50px;
+    background: rgb(77, 66, 53);
+    color: white;
+    padding: 20px;}
+    
+ h5{
+    margin-bottom: 15px;
+    border: 3px solid rosybrown;
+    padding: 10px;}    
+    
+ h4{
+    border: 2px;
+    padding-left: 0px;
+    margin: 10px;}
+ 
