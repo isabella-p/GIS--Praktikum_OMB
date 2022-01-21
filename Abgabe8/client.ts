@@ -6,98 +6,91 @@ namespace Client {
 
     const inputInterpret: HTMLInputElement = <HTMLInputElement>document.getElementById("interpret");
     const inputPrice: HTMLInputElement = <HTMLInputElement>document.getElementById("price");
-    const display: HTMLElement = <HTMLElement>document.querySelector("#display");
+    //const display: HTMLElement = <HTMLElement>document.querySelector("#display");
     const myButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#mache-etwas");
 
 
-    myButton.addEventListener("click", myButtonHandler);
+    myButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        myButtonHandler(event);
+    });
 
-    console.log(inputInterpret);
-    console.log(inputPrice);
+    //console.log(inputInterpret);
+    //console.log(inputPrice);
 
     async function sendJSONStringWithPOST(
         url: RequestInfo,
         jsonString: string
     ): Promise<void> {
         let response: Response = await fetch(url, {
-            method: "post", body: jsonString
+            method: "POST", body: jsonString
         });
     }
 
-    interface Concert {
-        firstNameOfInterpret: string;
-        lastNameOfInterpret: string;
-        price: number;
+    interface concertEvent {
+        interpret: string;
+        price: string;
     }
 
-    async function requestEvent(): Promise<Event[]> {
+    async function requestEvent(): Promise<void> {
         let response: Response = await fetch("http://localhost:3000/concertEvents");
         let text: string = await response.text();
-        return JSON.parse(text) as Event[];
+        console.log(JSON.parse(text));
+        //return JSON.parse(text) as Event[];
     }
 
     sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
-            firstNameOfInterpret: "Mark",
-            lastNameOfInterpret: "Knopfler",
-            price: 10.1
+            firstNameOfInterpret: "Mark Knopfler",
+            price: 10
         })
     );
 
     sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
-            firstNameOfInterpret: "Michael",
-            lastNameOfInterpret: "Bublé",
-            price: 11.1
+            Interpret: "Michael Bublé",
+            price: 15
         })
     );
 
-    sendJSONStringWithPOST(
-        "http://localhost:3000/concertEvents",
-        JSON.stringify({
-            firstNameOfInterpret: "Mariah",
-            lastNameOfInterpret: "Carey",
-            price: 1.1
-        })
-    );
-
-    function onSubmitForm(event: Event) {
+   /* function onSubmitForm(event: Event) {
         let formData: FormData = new FormData(<HTMLFormElement>event.currentTarget);
         sendJSONStringWithPOST(
             "http://localhost:3000/concertEvents",
             JSON.stringify({
                 _id: formData.get("_id"),
-                firsttNameOfInterpret: formData.get("firstNameOfInterpret"),
-                lastNameOfInterpret: formData.get("lastNameOfInterpret"),
+                Interpret: formData.get("Interpret"),
                 price: formData.get("price")
             })
         );
         event.preventDefault();
+    } */
+
+    async function send (event: concertEvent): Promise <void> {
+        await fetch (url + path, {
+            method: "POST", body: JSON.stringify(event)
+        });
+    }
+
+    function readFormData () {
+        var formData: any = {};
+        formData["Interpret"] = document.getElementById("Interpret").innerHTML;
+        formData["price"] = document.getElementById("price").innerHTML;
+        return readFormData;
     }
 
 
-    function myButtonHandler(): void {
-        let interpretValue: string = inputInterpret.value;
-        let priceValue: number = Number(inputPrice.value);
-        // console.log("button click");
-
-
-        // display.textContent = interpretValue + "; " + priceValue;
-        let newElement: HTMLDivElement = document.createElement("div");
-
-        newElement.textContent = interpretValue + "; " + priceValue;
-        display.appendChild(newElement);
-
-        /*let deleteButton: HTMLButtonElement = document.createElement("button");
-        deleteButton.textContent = "Delete"; 
-
-        newElement.appendChild(deleteButton);
-
-        deleteButton.addEventListener("click", function(): void {
-            deleteEvent(newElement);
-        });*/
+    async function myButtonHandler(event: Event): Promise <void> {
+        let interpret: string = inputInterpret.value;
+        let price: string = inputPrice.value;
+        let concertEvent: concertEvent = {
+            interpret: interpret,
+            price: price
+        };
+        console.log(concertEvent);
+        await send(concertEvent);
     }
 
     async function eventLoad(): Promise<void> {
