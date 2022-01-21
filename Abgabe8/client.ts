@@ -18,6 +18,28 @@ namespace Client {
     //console.log(inputInterpret);
     //console.log(inputPrice);
 
+    interface concertEvent {
+        interpret: string;
+        price: string;
+    }
+
+    async function myButtonHandler(event: Event): Promise <void> {
+        let interpret: string = inputInterpret.value;
+        let price: string = inputPrice.value;
+        let concertEvent: concertEvent = {
+            interpret: interpret,
+            price: price
+        };
+        console.log(concertEvent);
+        await sendInput(concertEvent);
+    }
+
+    async function sendInput (event: concertEvent): Promise <void> {
+        await fetch (url + path, {
+            method: "POST", body: JSON.stringify(event)
+        });
+    }
+
     async function sendJSONStringWithPOST(
         url: RequestInfo,
         jsonString: string
@@ -27,9 +49,11 @@ namespace Client {
         });
     }
 
-    interface concertEvent {
-        interpret: string;
-        price: string;
+    function formData () {
+        var formData: any = {};
+        formData["Interpret"] = document.getElementById("Interpret").innerHTML;
+        formData["price"] = document.getElementById("price").innerHTML;
+        return formData;
     }
 
     async function requestEvent(): Promise<void> {
@@ -39,21 +63,21 @@ namespace Client {
         //return JSON.parse(text) as Event[];
     }
 
-    sendJSONStringWithPOST(
+    /*sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
             firstNameOfInterpret: "Mark Knopfler",
             price: 10
         })
-    );
+    );*/
 
-    sendJSONStringWithPOST(
+    /*sendJSONStringWithPOST(
         "http://localhost:3000/concertEvents",
         JSON.stringify({
             Interpret: "Michael Bublé",
             price: 15
         })
-    );
+    );*/
 
    /* function onSubmitForm(event: Event) {
         let formData: FormData = new FormData(<HTMLFormElement>event.currentTarget);
@@ -68,35 +92,11 @@ namespace Client {
         event.preventDefault();
     } */
 
-    async function send (event: concertEvent): Promise <void> {
-        await fetch (url + path, {
-            method: "POST", body: JSON.stringify(event)
-        });
-    }
 
-    function readFormData () {
-        var formData: any = {};
-        formData["Interpret"] = document.getElementById("Interpret").innerHTML;
-        formData["price"] = document.getElementById("price").innerHTML;
-        return readFormData;
-    }
-
-
-    async function myButtonHandler(event: Event): Promise <void> {
-        let interpret: string = inputInterpret.value;
-        let price: string = inputPrice.value;
-        let concertEvent: concertEvent = {
-            interpret: interpret,
-            price: price
-        };
-        console.log(concertEvent);
-        await send(concertEvent);
-    }
-
-    async function eventLoad(): Promise<void> {
+    /*async function eventLoad(): Promise<void> {
         let response: Response = await fetch("http://localhost:3000/concertEvents");
         let text: string = await response.text();
         console.log(JSON.parse(text));
-    }
+    }*/
 
 }

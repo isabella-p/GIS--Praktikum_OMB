@@ -32,9 +32,7 @@ var Client;
                 await mongoClient.connect();
                 switch (request.method) {
                     case "GET":
-                        await dbFind("meineEvents", "concertEventsCol", {
-                        //concertNr: Number(url.searchParams.get("concertNr"))
-                        }, response);
+                        await dbFind("events", "interpret", {}, response);
                         break;
                     case "POST":
                         let jsonString = "";
@@ -43,8 +41,8 @@ var Client;
                         });
                         request.on("end", async () => {
                             mongoClient
-                                .db("meineEvents")
-                                .collection("concertEventsCol")
+                                .db("events")
+                                .collection("interpret")
                                 .insertOne(JSON.parse(jsonString));
                         });
                         response.write("rueckgabeInput");
