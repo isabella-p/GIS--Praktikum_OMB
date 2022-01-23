@@ -5,9 +5,13 @@ const mongo = require("mongodb");
 var Client;
 (function (Client) {
     const hostname = "127.0.0.1"; //localhost
-    const port = 3000;
+    const port = 3001;
     const mongoUrl = "mongodb://localhost:27017"; // für lokale MongoDB
-    let mongoClient = new mongo.MongoClient(mongoUrl);
+    //let mongoClient: mongo.MongoClient = new mongo.MongoClient(mongoUrl);
+    const mongoClient = new mongo.MongoClient(mongoUrl, {
+        connectTimeoutMS: 0,
+        serverSelectionTimeoutMS: 0
+    });
     async function dbFind(db, collection, requestObject, response) {
         let result = await mongoClient
             .db(db)
@@ -20,7 +24,7 @@ var Client;
     const server = http.createServer(async (request, response) => {
         response.statusCode = 200;
         //response.setHeader("Content-Type", "text/plain");
-        response.setHeader("Access-Control-Allow-Original", "*");
+        response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
         //Routing
         let url = new URL(request.url || "", `http://${request.headers.host}`);
@@ -32,7 +36,7 @@ var Client;
                 await mongoClient.connect();
                 switch (request.method) {
                     case "GET":
-                        await dbFind("events", "interpret", {}, response);
+                        await dbFind("events", "concert", {}, response);
                         break;
                     case "POST":
                         let jsonString = "";
@@ -42,7 +46,7 @@ var Client;
                         request.on("end", async () => {
                             mongoClient
                                 .db("events")
-                                .collection("interpret")
+                                .collection("concert")
                                 .insertOne(JSON.parse(jsonString));
                         });
                         response.write("rueckgabeInput");

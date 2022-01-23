@@ -3,9 +3,14 @@ import * as mongo from "mongodb";
 
 namespace Client {
     const hostname: string = "127.0.0.1"; //localhost
-    const port: number = 3000;
+    const port: number = 3001;
     const mongoUrl: string = "mongodb://localhost:27017"; // für lokale MongoDB
-    let mongoClient: mongo.MongoClient = new mongo.MongoClient(mongoUrl);
+    //let mongoClient: mongo.MongoClient = new mongo.MongoClient(mongoUrl);
+
+    const mongoClient = new mongo.MongoClient(mongoUrl, {
+        connectTimeoutMS: 0,
+        serverSelectionTimeoutMS: 0
+    });
 
     async function dbFind(
         db: string,
@@ -28,7 +33,7 @@ namespace Client {
 
             response.statusCode = 200;
             //response.setHeader("Content-Type", "text/plain");
-            response.setHeader("Access-Control-Allow-Original", "*");
+            response.setHeader("Access-Control-Allow-Origin", "*");
             response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
 
             //Routing
@@ -46,7 +51,7 @@ namespace Client {
                         case "GET":
                             await dbFind(
                                 "events",
-                                "interpret",
+                                "concert",
                                 {},
                                 response
                             );
@@ -61,7 +66,7 @@ namespace Client {
                             request.on("end", async () => {
                                 mongoClient
                                     .db("events")
-                                    .collection("interpret")
+                                    .collection("concert")
                                     .insertOne(JSON.parse(jsonString));
                             });
                             response.write("rueckgabeInput");
