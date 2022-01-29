@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node ./Abgabe8/server.js"
+    "start": "node ./Pottrick_Isabella/server.js"
   },
   "dependencies": {
     "@types/node": "^16.11.11",

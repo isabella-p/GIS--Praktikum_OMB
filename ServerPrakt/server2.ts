@@ -9,7 +9,7 @@ namespace Server {
             
             response.statusCode = 200;
             response.setHeader("Content-Type", "text/plain");
-            response.setHeader("Access-Control-Allow-Original", "*");
+            response.setHeader("Access-Control-Allow-Origin", "*");
 
             //Routing
             let url: URL = new URL(request.url || "", `htt://${request.headers.host}`);

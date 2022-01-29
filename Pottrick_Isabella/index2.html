@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gefriergut</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="client2.js" defer></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="Startseite"> </nav>
+        <a id="index2.html"> </a>
+        <a id="zumAnfang"> Startseite </a>
+        <h1> Neues Gefriergut anlegen: </h1>
+    </header>
+
+    <main>
+        <div id="display">
+            <form id="freezer">
+                <h4> Bitte tragen Sie hier Ihr Produkt ein, welches Sie einfrieren möchten: </h4>
+                <label for="name"> Name des Gefrierguts: </label>
+                <input id="name" type="text" name="name" placeholder="name" />
+                <br />
+                <label for="anlegedatum"> Anlegedatum:</label>
+                <input id="anlegedatum" type="date" name="anlegedatum" placeholder="anlegedatum" />
+                <br />
+                <label for="ablaufdatum"> Ablaufdatum:</label>
+                <input id="ablaufdatum" type="date" name="ablaufdatum" placeholder="ablaufdatum" />
+                <br />
+                <label for="anzahl"> Anzahl des Gefrierguts: </label>
+                <input id="anzahl" type="number" name="anzahl" placeholder="anzahl" />
+                <button id="sendButton"> Gefriergut hinzufügen </button>
+        </div>
+
+        <div>
+            <table id="tabelle" width="62%" border>
+                <tr>
+                    <th> Name </th>
+                    <th> Anlegedatum </th>
+                    <th> Ablaufdatum </th>
+                    <th> Anzahl </th>
+                </tr>
+            </table>
+        </div>
+        <br />
+    </main>
+
+    <footer>
+        <br />
+        <hr />
+        <h5>Hier kommen Sie wieder zu ihrem <a href="index.html"> Gefrierschrank. </a>
+        <br />
+        Hier kommen Sie zurück <a href="#zumAnfang"> zum Anfang </a> </h5>
+    </footer>
+</body>
+
+</html>

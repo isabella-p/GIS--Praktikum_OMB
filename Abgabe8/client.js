@@ -13,13 +13,11 @@ var Client;
         event.preventDefault();
         myButtonHandler(event);
     });
-    //myButton.addEventListener("click", myButtonHandler);
-    console.log(myButton);
     let eventFromSever = [];
     window.addEventListener("load", () => {
         getData();
     });
-    myButton.addEventListener("click", myButtonHandler);
+    //myButton.addEventListener("click", myButtonHandler);
     async function getData() {
         let response = await fetch(url + path);
         let responseText = await response.text();
@@ -40,18 +38,6 @@ var Client;
         let response = await fetch(url, {
             method: "POST", body: jsonString
         });
-    }
-    function readData() {
-        var formData = {};
-        formData["Interpret"] = document.getElementById("Interpret").innerHTML;
-        formData["price"] = document.getElementById("price").innerHTML;
-        return formData;
-    }
-    async function requestInterpret() {
-        let response = await fetch("http://localhost:3001/concertEvents");
-        let text = await response.text();
-        console.log(JSON.parse(text));
-        //return JSON.parse(text) as Event[];
     }
     async function myButtonHandler(event) {
         let interpret = inputInterpret.value;
@@ -83,6 +69,18 @@ var Client;
         tr.appendChild(interpret);
         tr.appendChild(price);
         tr.appendChild(deleteButton);
+    }
+    function readData() {
+        var formData = {};
+        formData["Interpret"] = document.getElementById("Interpret").innerHTML;
+        formData["price"] = document.getElementById("price").innerHTML;
+        return formData;
+    }
+    async function requestInterpret() {
+        let response = await fetch("http://localhost:3001/concertEvents");
+        let text = await response.text();
+        console.log(JSON.parse(text));
+        //return JSON.parse(text) as Event[];
     }
 })(Client || (Client = {}));
 /*sendJSONStringWithPOST(
